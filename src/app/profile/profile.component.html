@@ -1,0 +1,24 @@
+<mat-drawer-container class="main">
+    <mat-drawer mode="side" opened class="p-4">
+        <img src="assets/logo.png" alt="logo" width="80%" class="mb-4">
+        <div>
+            <button mat-button *ngFor="let menu of menus" class="py-1" [routerLink]="menu.link">
+                <i [class]="menu.icon" style="font-size: 20px;"></i>
+                <label style="font-size: 18px;" class="ml-3 desc-text">{{menu.label}}</label>
+            </button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="p-4">
+        <mat-toolbar fxLayoutAlign="space-between center">
+            <div class="">
+                <span>My App</span>
+            </div>
+            <div class="">
+                <button mat-icon-button class="example-icon" aria-label="signout" (click)="signOut()">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

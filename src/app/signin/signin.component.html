@@ -1,0 +1,48 @@
+<div class="main" fxLayout="row">
+    <div class="bg-box" fxFlex="60%" fxLayoutAlign="center center">
+        <img src="assets/login.svg" alt="signup" class="img animate__animated animate__bounce">
+    </div>
+    <div class="form-box p-5" fxFlex="40%">
+        <h2 class="title-text p-0 m-0">Build Relation With</h2>
+        <p class="desc-text mt-2">Your Customers</p>
+        <mat-tab-group>
+            <mat-tab label="Email Signin">
+                <form class="example-form" fxLayout="column" [formGroup]="emailSigninForm" (submit)="emailSignin()">
+                    <mat-form-field class="example-full-width mt-4" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" #pwd>
+                        <mat-icon matSuffix (click)="pwd.type=='password' ? pwd.type='text' : pwd.type='password'">{{pwd.type=='password' ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+
+                    <mat-checkbox>Remember me!</mat-checkbox>
+
+                    <button type="submit" mat-button mat-flat-button color="primary" class="py-1 mt-4">Signin</button>
+                </form>
+            </mat-tab>
+            <mat-tab label="Phone Signin">
+                <form class="example-form" fxLayout="column">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password">
+                        <mat-icon matSuffix>visibility</mat-icon>
+                    </mat-form-field>
+
+                    <mat-checkbox>Remember me!</mat-checkbox>
+
+                    <button type="submit" mat-button mat-flat-button color="primary" class="py-1 mt-4">Signin</button>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="main" fxLayout="row">
+    <div class="bg-box" fxFlex="60%" fxLayoutAlign="center center">
+        <img src="assets/signup.svg" alt="signup" class="img">
+    </div>
+    <div class="form-box p-5" fxFlex="40%">
+        <h2 class="title-text p-0 m-0">Build Relation With</h2>
+        <p class="desc-text mt-2">Your Customers</p>
+        <mat-tab-group>
+            <mat-tab label="Email Signup">
+                <form class="example-form" fxLayout="column" [formGroup]="emailSignupForm" (submit)="emailSignup()">
+                    <mat-form-field class="example-full-width mt-4" appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput type="text" formControlName="fullName">
+                    </mat-form-field>
+                
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email" #email (blur)="isUserAlreadyExist(email)">
+                        <mat-icon color="warn" matSuffix *ngIf="invalidEmail">error</mat-icon>
+                        <mat-icon color="primary" matSuffix *ngIf="validEmail">check_circle</mat-icon>
+                        <mat-error *ngIf="invalidEmail">User already exist !</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" #pwd>
+                        <mat-icon matSuffix (click)="pwd.type=='password' ? pwd.type='text' : pwd.type='password'">{{pwd.type=='password' ?
+                            'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput type="number" formControlName="phone">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Website</mat-label>
+                        <input matInput type="text" formControlName="website">
+                        <mat-error *ngIf="website.invalid && website.hasError('required')">This field is required !</mat-error>
+                        <mat-error *ngIf="website.invalid && !website.hasError('required')">Enter a valid email !</mat-error>
+                    </mat-form-field>
+
+                    <mat-checkbox>I accept privacy policy</mat-checkbox>
+
+                    <button type="submit" mat-button mat-flat-button color="primary" class="py-1 mt-4">Signup</button>
+                </form>
+            </mat-tab>
+            <mat-tab label="Phone Signup">
+                <form class="example-form" fxLayout="column">
+                    <mat-form-field class="example-full-width mt-4" appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+                    
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password">
+                        <mat-icon matSuffix>visibility</mat-icon>
+                    </mat-form-field>
+                
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Website</mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                
+                    <mat-checkbox>I accept privacy policy</mat-checkbox>
+                
+                    <button type="submit" mat-button mat-flat-button color="primary" class="py-1 mt-4">Signup</button>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+</div>

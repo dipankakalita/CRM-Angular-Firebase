@@ -1,0 +1,50 @@
+<!-- >Add customers record -->
+<button mat-button mat-flat-button color="primary" (click)="customerDialog(dialogForAddCustomer)">Add customers</button>
+<ng-template #dialogForAddCustomer>
+    <h1 mat-dialog-title>Add Customer Record</h1>
+    <div mat-dialog-content>
+        <form *ngIf="!imageArea" fxLayout="column" [formGroup]="addCustomerRecord" (submit)="addCustomer()" fxFlex="400px">
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Customer Name</mat-label>
+                <input matInput type="text" formControlName="c_name">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Mobile</mat-label>
+                <input matInput type="number" formControlName="mobile">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput type="text" formControlName="city">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>State</mat-label>
+                <input matInput type="text" formControlName="state">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput type="text" formControlName="country">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Pincode</mat-label>
+                <input matInput type="text" formControlName="pincode">
+            </mat-form-field>
+            <mat-form-field class="" appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput type="text" formControlName="address">
+            </mat-form-field>        
+        
+            <button type="submit" mat-button mat-flat-button color="primary">Submit</button>
+        </form>
+        <!-- upload area -->
+        <div *ngIf="imageArea" class="uploadArea" fxLayout="column" fxLayoutAlign="center center">
+            <i class="fa fa-cloud-upload" style="font-size: 50px;"></i>
+            <h1 class="title-text p-0 mt-0">Drop Customer Image</h1>
+            <button mat-button mat-raised-button color="accent" class="pt-1 px-3">Browse File</button>
+            <input (change)="uploadCustomerPic()" type="file" accept="images/*" class="uploadInput">
+        </div>
+    </div>
+</ng-template>
